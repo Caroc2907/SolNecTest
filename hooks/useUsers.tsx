@@ -17,6 +17,11 @@ export interface User {
   email: string;
   phone: string;
   website: string;
+  company?: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
 }
 
 const fetchUsers = async (): Promise<User[]> => {

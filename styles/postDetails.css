@@ -1,0 +1,62 @@
+/* 📌 Contenedor principal del post */
+.post-detail-container {
+ 
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* 📝 Título del post */
+  .post-detail-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #005bbb;
+    margin-bottom: 15px;
+  }
+  
+  /* 📜 Cuerpo del post */
+  .post-content {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+  }
+  
+  /* 🌙 Modo oscuro */
+  .dark-mode .post-detail-container {
+    background: #222;
+    color: white;
+  }
+  
+  .dark-mode .post-content {
+    color: #ddd;
+  }
+  /* 🔙 Botón de volver */
+.back-button {
+  background: #005bbb;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: #003f7f;
+}
+
+/* 🌙 Modo oscuro */
+.dark-mode .back-button {
+  background: #0070f3;
+}
+
+  

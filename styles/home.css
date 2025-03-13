@@ -1,0 +1,102 @@
+/* 📌 Contenedor principal */
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--background); /* ✅ Compatible con modo oscuro */
+  color: var(--foreground); /* ✅ Usa colores globales */
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  overflow: hidden; /* ✅ Evita que la imagen se desborde */
+}
+
+/* 📌 Marca de agua en el fondo */
+.home-container::before {
+  content: '';
+  background: url('/images/programmer-girl.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.1; /* 🔥 Reduce la opacidad */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* ✅ Mantiene la imagen en el fondo sin desaparecer */
+  pointer-events: none; /* ✅ Evita que interfiera con los clics */
+}
+
+/* 🎯 Título Principal */
+.home-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #005bbb;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1; /* ✅ Asegura que esté sobre la marca de agua */
+}
+
+/* 📝 Descripción */
+.home-description {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🚀 Botones de navegación */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2; /* ✅ Asegura que los botones estén sobre la imagen */
+}
+
+/* 🔘 Estilos de botones */
+.home-button {
+  padding: 12px 20px;
+  background: #005bbb;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out;
+  position: relative;
+  z-index: 3;
+}
+
+.home-button:hover {
+  background: #003f7f;
+}
+
+/* 🎨 Marca de agua en modo oscuro */
+.dark-mode .home-container::before {
+  opacity: 0.2; /* ✅ Aumenta la opacidad en modo oscuro */
+}
+
+.dark-mode .home-container {
+  background: #0a0a0a; /* ✅ Fondo oscuro */
+  color: #ededed;
+}
+
+.dark-mode .home-title {
+  color: #0070f3;
+}
+
+.dark-mode .home-description {
+  color: #ccc;
+}
+
+.dark-mode .home-button {
+  background: #0070f3;
+}
+
+.dark-mode .home-button:hover {
+  background: #005bbb;
+}

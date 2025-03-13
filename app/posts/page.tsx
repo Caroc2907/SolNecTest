@@ -19,10 +19,9 @@ export default async function PostsPage() {
   const initialPosts = await fetchInitialPosts();
 
   return (
-    <div>
-      <h1>Lista de Publicaciones</h1>
-      <PostsList initialPosts={initialPosts} />{" "}
-      {/* ✅ Pasamos `initialPosts` como prop */}
+    <div className="posts-page-container">
+      <h1 className="page-title">Lista de Publicaciones</h1>
+      <PostsList initialPosts={initialPosts} />
     </div>
   );
 }

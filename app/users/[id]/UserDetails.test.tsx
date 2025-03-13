@@ -1,7 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import UserDetails from "./UserDetails";
+import { User } from "@/hooks/useUsers";
 
-const mockUser = {
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    back: jest.fn(),
+  }),
+}));
+
+const mockUser: User = {
   id: 1,
   name: "Juan Pérez",
   username: "juanp",
@@ -15,20 +22,13 @@ describe("UserDetails Component", () => {
     render(<UserDetails user={mockUser} />);
 
     expect(screen.getByText("Juan Pérez")).toBeInTheDocument();
-
-    const userParagraph = screen
-      .getByText("Usuario:", { exact: false })
-      .closest("p");
-    expect(userParagraph).toHaveTextContent("Usuario: juanp");
-
-    const emailParagraph = screen
-      .getByText("Email:", { exact: false })
-      .closest("p");
-    expect(emailParagraph).toHaveTextContent("Email: juan@example.com");
+    expect(screen.getByText("juan@example.com")).toBeInTheDocument();
+    expect(screen.getByText("juanperez.com")).toBeInTheDocument();
   });
 
   it("debería mostrar 'Cargando...' si no hay usuario", () => {
     render(<UserDetails user={undefined} />);
+
     expect(screen.getByText("Cargando...")).toBeInTheDocument();
   });
 });

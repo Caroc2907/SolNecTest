@@ -1,0 +1,42 @@
+.sidebar {
+    width: 250px;
+    background: var(--primary-blue);
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width var(--transition-speed);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sidebar hover */
+  .sidebar:hover {
+    width: 270px;
+  }
+  
+  /* Lista de navegación */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul li a {
+    display: block;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed);
+  }
+  
+  /* Enlace activo */
+  .sidebar ul li a.active {
+    background: var(--dark-blue);
+  }
+  

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useAddComment } from "@/hooks/useComments";
+import "@/styles/addComment.css";
 
 export default function AddComment({ postId }: { postId: string }) {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ export default function AddComment({ postId }: { postId: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="comment-form-container">
       <h3>Añadir Comentario</h3>
       <input
         type="text"

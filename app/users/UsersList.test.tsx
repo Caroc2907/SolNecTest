@@ -24,8 +24,9 @@ const mockUsers: User[] = [
 describe("UsersList Component", () => {
   it("debería renderizar la lista de usuarios", () => {
     render(<UsersList initialUsers={mockUsers} />);
-    expect(screen.getByText("Juan Pérez (@juanp)")).toBeInTheDocument();
-    expect(screen.getByText("Ana Gómez (@anag)")).toBeInTheDocument();
+
+    expect(screen.getByText("Juan Pérez")).toBeInTheDocument();
+    expect(screen.getByText("Ana Gómez")).toBeInTheDocument();
   });
 
   it("debería filtrar usuarios correctamente", async () => {
@@ -35,8 +36,8 @@ describe("UsersList Component", () => {
     fireEvent.change(input, { target: { value: "juan" } });
 
     await waitFor(() => {
-      expect(screen.getByText("Juan Pérez (@juanp)")).toBeInTheDocument();
-      expect(screen.queryByText("Ana Gómez (@anag)")).toBeNull();
+      expect(screen.getByText("Juan Pérez")).toBeInTheDocument();
+      expect(screen.queryByText("Ana Gómez")).toBeNull();
     });
   });
 

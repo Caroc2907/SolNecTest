@@ -1,0 +1,17 @@
+/* 🎨 Botón para cambiar a Modo Oscuro */
+.dark-mode-toggle {
+    margin-top: 20px;
+    background: var(--sidebar-active);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background var(--transition-speed);
+  }
+  
+  /* 🖱️ Hover en el botón de Dark Mode */
+  .dark-mode-toggle:hover {
+    background: var(--sidebar-bg);
+  }
+  

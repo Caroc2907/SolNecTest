@@ -1,0 +1,53 @@
+/* 🎨 Sidebar (menú lateral) */
+.sidebar {
+    width: 220px; /* 🔹 Reducimos el ancho para que no se sobreponga en la tabla */
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width var(--transition-speed);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 📌 Hover para ampliar ligeramente el sidebar */
+  .sidebar:hover {
+    width: 240px;
+  }
+  
+  /* 📋 Lista de navegación dentro del Sidebar */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* 🖋️ Estilos de cada ítem del Sidebar */
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* 🔹 Enlace normal en el Sidebar */
+  .sidebar ul li a {
+    display: block;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed);
+    text-decoration: none; /* ❌ Quita el subrayado */
+  }
+  
+  /* 🚀 Estilo especial cuando la ruta está activa */
+  .sidebar ul li a.active {
+    background: var(--sidebar-active);
+  }
+  
+  /* 📌 Ajuste del contenido para evitar solapamientos */
+  .content {
+    margin-left: 220px; /* Ajustado según el nuevo ancho del sidebar */
+    padding: 20px;
+    width: calc(100% - 220px);
+    transition: margin-left var(--transition-speed);
+  }

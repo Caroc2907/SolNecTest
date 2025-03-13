@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePosts, Post } from "@/hooks/usePosts";
 import { useInView } from "react-intersection-observer";
 import { useDebounce } from "use-debounce";
+import "@/styles/table.css";
 
 interface PostsListProps {
   initialPosts: Post[];
@@ -35,25 +36,25 @@ export default function PostsList({ initialPosts }: PostsListProps) {
   );
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Buscar por título..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className="posts-container">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="🔍 Buscar por título..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
+        />
 
-      <button
-        onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-      >
-        Ordenar: {sortOrder === "asc" ? "A-Z" : "Z-A"}
-      </button>
+        <button
+          onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+          className="sort-button"
+        >
+          {sortOrder === "asc" ? "🔼 A-Z" : "🔽 Z-A"}
+        </button>
+      </div>
 
-      <table
-        border={1}
-        width="100%"
-        style={{ marginTop: "10px", borderCollapse: "collapse" }}
-      >
+      <table className="posts-table">
         <thead>
           <tr>
             <th>Título</th>
@@ -64,7 +65,9 @@ export default function PostsList({ initialPosts }: PostsListProps) {
           {sortedPosts.map((post) => (
             <tr key={post.id}>
               <td>
-                <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                <Link href={`/posts/${post.id}`} className="post-link">
+                  {post.title}
+                </Link>
               </td>
               <td>{post.body.substring(0, 50)}...</td>
             </tr>
@@ -72,9 +75,10 @@ export default function PostsList({ initialPosts }: PostsListProps) {
         </tbody>
       </table>
 
-      {/* ✅ Evita hacer múltiples llamadas innecesarias */}
       <div ref={ref} style={{ height: "20px", marginBottom: "50px" }}></div>
-      {isFetchingNextPage && <p>Cargando más publicaciones...</p>}
+      {isFetchingNextPage && (
+        <p className="loading-text">Cargando más publicaciones...</p>
+      )}
     </div>
   );
 }
