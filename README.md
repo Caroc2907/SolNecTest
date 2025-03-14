@@ -41,7 +41,7 @@ yarn install
 npm run dev
 🔗 Luego, abre [http://localhost:3000] en tu navegador.
 ```
-
+```bash
 📂 Estructura del Proyecto
 📂 my-next-app
  ┣ 📂 app                # Páginas principales
@@ -56,6 +56,7 @@ npm run dev
  ┣ 📜 next.config.js     # Configuración de Next.js
  ┣ 📜 package.json       # Dependencias y scripts
  ┗ 📜 README.md          # Documentación del proyecto
+```
 
 🏗 Organización de la Carpeta /app
 Se usa la carpeta /app para aprovechar las Server Components de Next.js 14. La lógica de datos está separada en /hooks para un código más modular. La API está centralizada en /lib/api.ts para mejor mantenibilidad.
@@ -79,6 +80,6 @@ npm run test
 npm run test:watch
 ```
 
-📌 Autor
-👩🏻‍💻 Carolina Colorado - Desarrolladora Web
-🔗 LinkedIn: https://www.linkedin.com/in/carolina-colorado-colmenares/
+📌 Autor.
+👩🏻‍💻 Carolina Colorado - Desarrolladora Web.
+🔗 LinkedIn: https://www.linkedin.com/in/carolina-colorado-colmenares/.
