@@ -1,4 +1,4 @@
-import { User } from "@/hooks/useUsers";
+import { User } from "@/types/types";
 import UsersList from "./UsersList";
 import axios from "axios";
 

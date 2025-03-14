@@ -1,0 +1,15 @@
+// 🌙 Botón de Modo Oscuro
+.dark-mode-toggle {
+  margin-top: 20px;
+  background: var(--sidebar-active);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background var(--transition-speed);
+
+  &:hover {
+    background: var(--sidebar-bg);
+  }
+}

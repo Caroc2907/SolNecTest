@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePosts, Post } from "@/hooks/usePosts";
+import { usePosts } from "@/hooks/usePosts";
 import { useInView } from "react-intersection-observer";
 import { useDebounce } from "use-debounce";
-import "@/styles/table.css";
+import { Post } from "@/types/types";
+import "@/styles/table.scss";
 
 interface PostsListProps {
   initialPosts: Post[];

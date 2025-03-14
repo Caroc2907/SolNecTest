@@ -1,0 +1,74 @@
+// 📌 Contenedor principal del formulario
+.comment-form-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #005bbb;
+    margin-bottom: 15px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+
+    &:focus {
+      border-color: #005bbb;
+      box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  // 🚀 Botón de enviar
+  button {
+    background: #005bbb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: #003f7f;
+    }
+  }
+}
+
+// 🌙 Modo oscuro
+.dark-mode {
+  .comment-form-container {
+    background: #222;
+    color: white;
+
+    input,
+    textarea {
+      background: #333;
+      color: white;
+      border-color: #0070f3;
+    }
+
+    button {
+      background: #0070f3;
+    }
+  }
+}

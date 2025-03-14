@@ -3,7 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import { usePost } from "@/hooks/usePosts";
 import Comments from "./Comments";
 
-import "@/styles/postDetails.css";
+import "@/styles/postDetails.scss";
 
 export default function PostDetail() {
   const { id } = useParams<{ id: string }>();

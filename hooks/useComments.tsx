@@ -1,46 +1,29 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { IComment } from "@/types/types";
+import { getCommentsByPostId, addComment } from "@/lib/api";
 
-export interface Comment {
-  id: string;
-  postId: number;
-  name: string;
-  email: string;
-  body: string;
-}
-
-const fetchComments = async (postId: string): Promise<Comment[]> => {
-  const { data } = await axios.get(
-    `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
-  );
-  return data;
-};
-
+// 🔹 Hook para obtener comentarios de un post
 export function useComments(postId: string) {
-  return useQuery<Comment[], Error>({
+  return useQuery<IComment[], Error>({
     queryKey: ["comments", postId],
-    queryFn: () => fetchComments(postId),
+    queryFn: () => getCommentsByPostId(postId),
+    staleTime: 1000 * 60 * 5,
   });
 }
 
+// ✅ Hook para añadir un nuevo comentario
 export function useAddComment() {
   const queryClient = useQueryClient();
 
-  return useMutation<Comment, Error, Omit<Comment, "id">>({
+  return useMutation<IComment, Error, Omit<IComment, "id">>({
     mutationFn: async (newComment) => {
-      const { data } = await axios.post(
-        "https://jsonplaceholder.typicode.com/comments",
-        newComment
-      );
-      return data;
+      return addComment(newComment);
     },
+
     onSuccess: (newComment, variables) => {
-      queryClient.setQueryData<Comment[]>(
+      queryClient.setQueryData<IComment[]>(
         ["comments", String(variables.postId)],
-        (oldData) =>
-          oldData
-            ? [...oldData, { ...newComment, id: crypto.randomUUID() }]
-            : [{ ...newComment, id: crypto.randomUUID() }]
+        (oldData = []) => [...oldData, { ...newComment, id: `${Date.now()}` }]
       );
     },
   });

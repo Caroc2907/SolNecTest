@@ -1,55 +1,32 @@
+import { getUserById, getUsers } from "@/lib/api";
 import { useQuery, QueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { User } from "@/types/types";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // Datos frescos por 5 minutos
-      gcTime: 1000 * 60 * 10, // Evita eliminar la caché por 10 minutos
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 10,
     },
   },
 });
 
-export interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
-  website: string;
-  company?: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
-
-const fetchUsers = async (): Promise<User[]> => {
-  const { data } = await axios.get(
-    "https://jsonplaceholder.typicode.com/users"
-  );
-  return data;
-};
-
+//  Hook para obtener la lista de usuarios
 export function useUsers(initialUsers?: User[]) {
   return useQuery<User[], Error>({
     queryKey: ["users"],
-    queryFn: fetchUsers,
+    queryFn: getUsers,
     staleTime: 1000 * 60 * 5,
     initialData: initialUsers ?? [],
     enabled: initialUsers === undefined,
   });
 }
 
+// Hook para obtener un usuario por ID
 export function useUser(id: string) {
   return useQuery<User, Error>({
     queryKey: ["user", id],
-    queryFn: async () => {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${id}`
-      );
-      return data;
-    },
+    queryFn: () => getUserById(Number(id)),
     staleTime: 1000 * 60 * 10,
     enabled: !!id,
   });

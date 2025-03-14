@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import UsersList from "@/app/users/UsersList";
-import { User } from "@/hooks/useUsers";
+import { User } from "@/types/types";
 
 const mockUsers: User[] = [
   {

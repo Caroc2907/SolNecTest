@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import UserDetails from "./UserDetails";
-import { User } from "@/hooks/useUsers";
+import { User } from "@/types/types";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({

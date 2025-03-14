@@ -1,0 +1,130 @@
+// 🎨 Variables de colores
+$primary: #0070f3;
+$secondary: #005bbb;
+$light-bg: white;
+$dark-bg: #222;
+$border-radius: 8px;
+$shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+$shadow-dark: 0 5px 15px rgba(255, 255, 255, 0.2);
+
+// 🌙 Modo oscuro
+.dark-mode {
+  --bg: #111;
+  --text-color: white;
+  --card-bg: $dark-bg;
+  --text-muted: #bbb;
+} 
+
+
+.user-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    background: $light-bg;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: $shadow-light;
+    transition: background 0.3s;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      font-weight: bold;
+      color: inherit;
+    }
+
+    &:hover {
+      background: rgba(0, 112, 243, 0.1);
+    }
+  }
+
+
+  .dark-mode & {
+    li {
+      background: $dark-bg;
+    }
+
+    li a {
+      color: white;
+    }
+  }
+}
+
+
+.user-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid $secondary;
+  border-radius: $border-radius;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: $shadow-light;
+
+  &:hover,
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 8px rgba(0, 91, 187, 0.5);
+  }
+}
+
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.user-card {
+  background: var(--card-bg, $light-bg);
+  padding: 15px;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h3 {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--text-color, black);
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--text-muted, gray);
+    margin-top: 5px;
+  }
+
+  a {
+    text-decoration: none ;
+    color: inherit ;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  }
+
+
+  .dark-mode & {
+    background: $dark-bg;
+    color: white;
+
+    p {
+      color: #bbb;
+    }
+
+    &:hover {
+      box-shadow: $shadow-dark;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import PostsList from "./PostList";
-import { Post } from "@/hooks/usePosts";
+import { Post } from "@/types/types";
 
 async function fetchInitialPosts(): Promise<Post[]> {
   const { data } = await axios.get(

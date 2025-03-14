@@ -1,0 +1,106 @@
+// 🎨 Variables globales
+$primary-color: #005bbb;
+$primary-dark: #003f7f;
+$dark-mode-bg: #0a0a0a;
+$dark-mode-text: #ededed;
+$dark-highlight: #0070f3;
+$border-radius: 8px;
+$transition: 0.3s ease-in-out;
+
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--background);
+  color: var(--foreground);
+  transition: background $transition, color $transition;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    background: url("/images/programmer-girl.png") no-repeat center center;
+    background-size: contain;
+    opacity: 0.1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.home-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: $primary-color;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-description {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-button {
+  padding: 12px 20px;
+  background: $primary-color;
+  color: white;
+  font-size: 16px;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: background $transition;
+  position: relative;
+  z-index: 3;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+.dark-mode {
+  .home-container {
+    background: $dark-mode-bg;
+    color: $dark-mode-text;
+
+    &::before {
+      opacity: 0.2;
+    }
+  }
+
+  .home-title {
+    color: $dark-highlight;
+  }
+
+  .home-description {
+    color: #ccc;
+  }
+
+  .home-button {
+    background: $dark-highlight;
+
+    &:hover {
+      background: $primary-color;
+    }
+  }
+}

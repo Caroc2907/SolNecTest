@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Providers from "./providers";
+import TanstacQueryProvider from "./TanstacQueryProvider";
 import Sidebar from "./components/Sidebar";
 
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Solnec Test 🪄",
@@ -23,7 +23,7 @@ export default function RootLayout({
         <title>Prueba Técnica - Next.js 14</title>
       </head>
       <body>
-        <Providers>
+        <TanstacQueryProvider>
           <div className="layout">
             <Sidebar />
             <main className="content">{children}</main>
@@ -31,7 +31,7 @@ export default function RootLayout({
           <footer className="footer">
             <p>Developed by Carolina Colorado 👩🏻‍💻</p>
           </footer>
-        </Providers>
+        </TanstacQueryProvider>
       </body>
     </html>
   );

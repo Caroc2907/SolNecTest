@@ -1,6 +1,6 @@
-import { User } from "@/hooks/useUsers";
+import { User } from "@/types/types";
 import { useRouter } from "next/navigation";
-import "@/styles/userCard.css";
+import "@/styles/userCard.scss";
 
 export default function UserCard({ user }: { user: User | undefined }) {
   const router = useRouter();

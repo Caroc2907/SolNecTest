@@ -1,7 +1,7 @@
 "use client";
 import { useComments } from "@/hooks/useComments";
 import AddComment from "./AddComment";
-import "@/styles/comments.css";
+import "@/styles/comments.scss";
 
 export default function Comments({ postId }: { postId: string }) {
   const { data: comments, error } = useComments(postId);

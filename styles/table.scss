@@ -1,0 +1,149 @@
+// 🎨 Variables Globales
+$primary: #0070f3;
+$secondary: #005bbb;
+$dark-bg: #222;
+$light-bg: white;
+$border-radius: 8px;
+$shadow-light: 0 4px 10px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+
+.dark-mode {
+  --bg: $dark-bg;
+  --text-color: white;
+  --table-bg: $dark-bg;
+  --input-bg: $dark-bg;
+  --border-color: $primary;
+}
+
+.posts-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid $secondary;
+  border-radius: $border-radius;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    border-color: darken($secondary, 10%);
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+  }
+
+  .dark-mode & {
+    background: $dark-bg;
+    color: white;
+    border-color: $primary;
+  }
+}
+
+
+.sort-button {
+  background: $secondary;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: $border-radius;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: darken($secondary, 10%);
+  }
+
+  .dark-mode & {
+    background: $primary;
+  }
+}
+
+
+.posts-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $light-bg;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $shadow-light;
+
+  .dark-mode & {
+    background: $dark-bg;
+    color: white;
+  }
+}
+
+
+.posts-table th {
+  background: $secondary;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+
+  .dark-mode & {
+    background: darken($primary, 20%);
+  }
+}
+
+
+.posts-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.posts-table tr:hover {
+  background: rgba(0, 112, 243, 0.1);
+
+  .dark-mode & {
+    background: rgba(0, 112, 243, 0.2);
+  }
+}
+
+
+.post-link {
+  text-decoration: none;
+  color: $secondary;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .dark-mode & {
+    color: $primary;
+  }
+}
+
+
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  color: $secondary;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+.posts-page-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,23 +1,32 @@
+// 🎨 Variables globales
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --sidebar-bg: #005bbb; /* Azul oscuro más corporativo */
-  --sidebar-active: #003f7f; /* Azul más oscuro para la ruta activa */
+  --sidebar-bg: #005bbb;
+  --sidebar-active: #003f7f;
   --sidebar-text: #ffffff;
   --transition-speed: 0.3s;
   --border-radius: 8px;
 }
 
-/* Modo oscuro activado manualmente */
+// 🌙 Modo Oscuro
 .dark-mode {
   --background: #0a0a0a;
   --foreground: #ededed;
   --sidebar-bg: #003f7f;
-  --sidebar-active: #005bbb;
+  --sidebar-active: var(--sidebar-active);
 }
 
-/* Layout principal */
-html, body {
+// 🌎 Reset y configuración global
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+// 📌 Layout principal
+html,
+body {
   max-width: 100vw;
   overflow-x: hidden;
   background: var(--background);
@@ -29,14 +38,7 @@ html, body {
   transition: background var(--transition-speed), color var(--transition-speed);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-
-/* Contenido principal */
+// 🏗️ Contenido principal
 .content {
   margin-left: 250px;
   padding: 20px;
@@ -44,7 +46,7 @@ html, body {
   transition: margin-left var(--transition-speed);
 }
 
-/* Footer */
+// 🦶 Footer
 .footer {
   text-align: center;
   padding: 10px;
@@ -55,7 +57,7 @@ html, body {
   width: 100%;
 }
 
-/* ---- Botón de Dark Mode ---- */
+// 🔘 Botón de Modo Oscuro
 .dark-mode-toggle {
   margin-top: 20px;
   background: var(--sidebar-active);
@@ -65,10 +67,8 @@ html, body {
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background var(--transition-speed);
+
+  &:hover {
+    background: var(--sidebar-bg);
+  }
 }
-
-.dark-mode-toggle:hover {
-  background: var(--sidebar-bg);
-}
-
-

@@ -1,63 +1,35 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { getPosts, getPostById } from "@/lib/api";
+import { Post } from "@/types/types";
 
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
-
-const fetchPosts = async ({
-  pageParam = 1,
-  search = "",
-}: {
-  pageParam?: number;
-  search?: string;
-}): Promise<Post[]> => {
-  const { data } = await axios.get(
-    "https://jsonplaceholder.typicode.com/posts",
-    {
-      params: {
-        _limit: 10,
-        _page: pageParam ?? 1,
-        q: search?.trim().length ? search : undefined,
-      },
-    }
-  );
-  return data;
-};
-
-export function usePosts(search: string, initialPosts: Post[]) {
-  return useInfiniteQuery<Post[], Error>({
-    queryKey: ["posts", search],
-    queryFn: ({ pageParam = 1 }) =>
-      fetchPosts({ pageParam: pageParam as number, search }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) =>
-      lastPage.length ? allPages.length + 1 : undefined,
-    staleTime: 60000,
-    initialData: {
-      pages: [initialPosts],
-      pageParams: [1],
-    },
+// 🔹 Hook para obtener un solo post por ID
+export function usePost(postId: string) {
+  return useQuery<Post>({
+    queryKey: ["post", postId],
+    queryFn: () => getPostById(Number(postId)),
+    enabled: !!postId,
+    staleTime: 1000 * 60 * 10,
   });
 }
 
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
-
-export function usePost(id: string) {
-  return useQuery<Post, Error>({
-    queryKey: ["post", id],
-    queryFn: async () => {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}`
-      );
-      return data;
+// 🔹 Hook para obtener publicaciones con búsqueda y paginación infinita
+export function usePosts(searchQuery: string, initialPosts?: Post[]) {
+  return useInfiniteQuery({
+    queryKey: ["posts", searchQuery],
+    queryFn: async ({ pageParam = 1 }) => {
+      return await getPosts(pageParam, searchQuery);
     },
-    enabled: !!id,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length ? allPages.length + 1 : undefined;
+    },
+    staleTime: 1000 * 60 * 5,
+
+    initialData: initialPosts
+      ? {
+          pages: [initialPosts],
+          pageParams: [1],
+        }
+      : undefined,
   });
 }

@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { User } from "@/hooks/useUsers";
+import { User } from "@/types/types";
 import { useDebounce } from "use-debounce";
 
-import "@/styles/users.css";
+import "@/styles/users.scss";
 
 interface UsersListProps {
   initialUsers: User[];

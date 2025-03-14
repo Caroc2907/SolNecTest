@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DarkMode from "./DarkMode";
 
-import "@/styles/sidebar.css";
+import "@/styles/sidebar.scss";
 export default function Sidebar() {
   const pathname = usePathname(); // Obtiene la ruta actual
 
