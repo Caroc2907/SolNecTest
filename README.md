@@ -80,6 +80,6 @@ npm run test
 npm run test:watch
 ```
 
-📌 Autor.
-👩🏻‍💻 Carolina Colorado - Desarrolladora Web.
-🔗 LinkedIn: https://www.linkedin.com/in/carolina-colorado-colmenares/.
+📌 Autor  
+👩🏻‍💻 Carolina Colorado - Desarrolladora Web   
+🔗 LinkedIn: https://www.linkedin.com/in/carolina-colorado-colmenares/  
